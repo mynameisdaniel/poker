@@ -16,11 +16,7 @@ def read_hand(hand)
 end
 
 def has_flush?(hand)
-  suits = []
-  hand.split.each do |value_with_suit|
-    suits << value_with_suit[1]
-  end
-  suits = suits.join()
+  suits = hand.split.inject("") { |suits, card| suits + card[1] }
   return ["DDDDD", "CCCCC", "SSSSS", "HHHHH"].include?(suits)
 end
 
